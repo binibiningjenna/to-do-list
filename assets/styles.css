@@ -27,7 +27,6 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--primaryColor);
-  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -48,6 +47,7 @@ h2,
 h3,
 h4 {
   font-weight: bold;
+  text-transform: uppercase; 
 }
 
 .btn {
@@ -101,4 +101,8 @@ h4 {
 .form-select option:disabled {
   color: var(--darkColor);
   font-size: 1.2rem;
+}
+
+td {
+  white-space: nowrap;
 }

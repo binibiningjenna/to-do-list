@@ -4,34 +4,233 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>To-Do List</title>
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
-    <div class="container my-5">
+    <!-- Navigation Bar -->
+    <div class="d-flex justify-content-between px-3 px-lg-4 py-3 mb-4 border-bottom" style="background-color: var(--primaryColor)">
+      <a href="index.html" class="">
+        <img src="assets/img/logo.png" alt="logo" width="40px" />
+      </a>
+      <div class="nav d-flex align-items-center">
+        <i class="bi bi-moon-stars-fill"></i>
+        <!-- <i class="bi bi-brightness-high-fill"></i> -->
+      </div>
+    </div>
+
+    <div class="container my-0 my-lg-5">
       <div class="row">
         <div class="col">
-          <div class="card p-3">
-            <h1>HEADING 1</h1>
-            <h2>HEADING 2</h2>
-            <h3>HEADING 3</h3>
-            <h4>HEADING 4</h4>
-            <h5>HEADING 5</h5>
-            <h6>HEADING 6</h6>
-            <div class="my-3">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, cupiditate! Eos saepe inventore vel, ex perspiciatis recusandae tempore ab nesciunt architecto suscipit porro a voluptatum, modi officia beatae sunt officiis? Lorem ipsum,
-              dolor sit amet consectetur adipisicing elit. Enim, quisquam, eos, fugiat incidunt consectetur repudiandae eligendi labore laborum eum voluptatem quo soluta! Sunt harum itaque expedita molestiae neque iste veniam. Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. Molestias alias deleniti nisi quaerat sapiente error repellendus tenetur nobis ipsa amet sint aliquam odit debitis quidem consectetur eveniet, velit quam assumenda.
+          <!-- Date -->
+          <div class="card p-4 text-center">
+            <h1>To do list</h1>
+            <div><i class="bi bi-calendar-check"></i> Wednesday, June 25, 2025</div>
+          </div>
+
+          <!-- Add Task and Filter -->
+          <div class="d-flex justify-content-center mt-5 gap-3 flex-wrap">
+            <div class="input-group" style="max-width: 450px; width: 100%">
+              <input type="text" class="form-control" placeholder="Add a new task" aria-label="Recipient’s username" aria-describedby="button-addon2" />
+              <button class="btn btn-primary" type="button" id="button-addon2">Add</button>
             </div>
-            <div class="btn btn-primary my-3">PRIMARY BUTTON</div>
-            <div class="btn btn-secondary">SECONDARY BUTTON</div>
-            <input type="text" class="form-control my-3" placeholder="Search" />
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
+            <div class="input-group position-relative" style="max-width: 250px; width: 100%">
+              <i class="bi bi-filter position-absolute top-50 start-0 translate-middle-y ms-2"></i>
+              <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                <option selected>Choose...</option>
+                <option value="Not Started" selected>Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done">Done</option>
+              </select>
+              <button class="btn btn-primary" type="button">Apply</button>
+            </div>
+          </div>
+
+          <!-- To Do List -->
+          <div class="card p-4 my-4 table-responsive">
+            <table class="table table-striped table-borderless">
+              <thead class="align-middle">
+                <tr>
+                  <th scope="col">TASK</th>
+                  <th scope="col">STATUS</th>
+                  <th class="text-end" scope="col">ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <select class="form-select w-auto" aria-label="Default select example">
+                      <option selected>Choose...</option>
+                      <option value="Not Started" selected>Not Started</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Done">Done</option>
+                    </select>
+                  </td>
+                  <td class="align-middle">Do activity 1</td>
+                  <td class="text-end align-middle">
+                    <div class="d-inline-flex gap-2">
+                      <a data-bs-toggle="modal" data-bs-target="#editModal">
+                        <i class="bi bi-pencil-square"></i>
+                      </a>
+                      <a style="color: red" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        <i class="bi bi-trash3 pe-2"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <select class="form-select w-auto" aria-label="Default select example">
+                      <option selected>Choose...</option>
+                      <option value="Not Started" selected>Not Started</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Done">Done</option>
+                    </select>
+                  </td>
+                  <td class="align-middle">Do laundry</td>
+                  <td class="text-end align-middle">
+                    <div class="d-inline-flex gap-2">
+                      <a data-bs-toggle="modal" data-bs-target="#editModal">
+                        <i class="bi bi-pencil-square"></i>
+                      </a>
+                      <a style="color: red" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        <i class="bi bi-trash3 pe-2"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <select class="form-select w-auto" aria-label="Default select example">
+                      <option selected>Choose...</option>
+                      <option value="Not Started" selected>Not Started</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Done">Done</option>
+                    </select>
+                  </td>
+                  <td class="align-middle">Go to shopping</td>
+                  <td class="text-end align-middle">
+                    <div class="d-inline-flex gap-2">
+                      <a data-bs-toggle="modal" data-bs-target="#editModal">
+                        <i class="bi bi-pencil-square"></i>
+                      </a>
+                      <a style="color: red" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        <i class="bi bi-trash3 pe-2"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Edit Task Modal -->
+          <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content" style="border-radius: 15px">
+                <!-- Header -->
+                <div style="background-color: var(--primaryColor); color: white; padding: 1rem; border-top-left-radius: 15px; border-top-right-radius: 15px; position: relative">
+                  <h4 class="modal-title text-center subheading" id="editModalLabel" style="margin: 0; font-size: 20px; letter-spacing: 2px">EDIT TASK</h4>
+                  <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    style="position: absolute; top: 16px; right: 16px; background-color: transparent; opacity: 1; outline: none; box-shadow: none"
+                  ></button>
+                </div>
+
+                <!-- Body -->
+                <div class="modal-body" style="padding: 1.5rem">
+                  <form id="editForm">
+                    <div class="mb-3 text-start">
+                      <label for="announcementTitle" class="form-label fw-bold">Title</label>
+                      <select class="form-select w-auto" aria-label="Default select example">
+                        <option selected>Not Started</option>
+                        <option value="1">In Progress</option>
+                        <option value="2">Done</option>
+                      </select>
+                    </div>
+                    <div class="text-start">
+                      <label for="taskDescription" class="form-label fw-bold">Task</label>
+                      <textarea class="form-control" id="taskDescription" rows="3">Do activity 1</textarea>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Footer -->
+                <div class="modal-footer d-flex justify-content-end" style="border: none; padding: 1rem">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                  <button type="button" class="btn btn-primary" style="margin-left: 0.5rem" data-bs-toggle="modal" data-bs-target="#confirmEditModal">SAVE CHANGES</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirm Edit Task Modal -->
+          <div class="modal fade" id="confirmEditModal" tabindex="-1" aria-labelledby="confirmEditModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content" style="border-radius: 15px; color: white; border: none">
+                <div class="modal-header" style="border: none">
+                  <h4 class="modal-title heading text-center w-100 text-black" id="confirmEditModalLabel" style="margin: 0">TASK UPDATED</h4>
+                </div>
+                <div class="modal-body text-center text-black">The <strong>TASK</strong> has been successfully updated.</div>
+                <div class="modal-footer d-flex justify-content-center pb-4" style="border: none">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">CLOSE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Delete Task Modal -->
+          <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content" style="border-radius: 15px">
+                <!-- Header -->
+                <div style="background-color: var(--primaryColor); color: white; padding: 1rem; border-top-left-radius: 15px; border-top-right-radius: 15px; position: relative">
+                  <h4 class="modal-title text-center subheading" id="deleteModalLabel" style="margin: 0; font-size: 20px; letter-spacing: 2px">DELETE TASK</h4>
+                  <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    style="position: absolute; top: 16px; right: 16px; background-color: transparent; opacity: 1; outline: none; box-shadow: none"
+                  ></button>
+                </div>
+
+                <!-- Body -->
+                <div class="modal-body text-center" style="padding: 1.5rem">
+                  <div style="margin: 0; font-size: 20px; color: black">
+                    Are you sure you want to delete this <strong>Do Activity 1</strong> task? <br /><br />
+                    Once deleted, this task will no longer be recovered.
+                  </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="modal-footer d-flex justify-content-end" style="border: none; padding: 1rem">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                  <button type="button" class="btn btn-primary" style="margin-left: 0.5rem" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-bs-dismiss="modal">DELETE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirm Delete Task Modal -->
+          <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content" style="border-radius: 15px; color: white; border: none">
+                <div class="modal-header" style="border: none">
+                  <h4 class="modal-title heading text-center w-100 text-black" id="confirmDeleteModalLabel" style="margin: 0">TASK DELETED</h4>
+                </div>
+                <div class="modal-body text-center text-black">The <strong>Do Activity 1</strong> task has been successfully deleted.</div>
+                <div class="modal-footer d-flex justify-content-center pb-4" style="border: none">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">CLOSE</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
