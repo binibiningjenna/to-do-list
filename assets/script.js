@@ -34,7 +34,7 @@ function displayTasks(taskArray = tasks) {
     if (taskArray.length === 0) {
         list.innerHTML = `
         <tr>
-            <td colspan="3" class="text-center text-muted">You have no tasks right now. Add a new task to get started!</td>
+            <td colspan="3" class="text-center text-muted">No tasks available!</td>
         </tr>
         `;
     }
