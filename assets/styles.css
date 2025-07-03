@@ -82,7 +82,7 @@ h4 {
 }
 
 .form-control {
-  color: var(--darkColor) !important;
+  color: var(--darkColor);
   font-size: 1.2rem;
 }
 
