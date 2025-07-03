@@ -2,21 +2,15 @@
 
 A clean, responsive, and easy-to-use web-based To-Do List application designed to help users manage their daily tasks efficiently. Built using **HTML**, **CSS**, **JavaScript**, and **Bootstrap 5**, with data persistence via `localStorage`.
 
----
-
 ## 🔗 Live Preview
 
 ✨ You can view the project here: [To-Do List Web App](https://binibiningjenna.github.io/to-do-list/)
-
----
 
 ## 📌 Version
 
 **Current Release: v1.0.0**
 
 This is the first official version of the To-Do List App. It includes basic functionality such as adding, editing, deleting, and filtering tasks with a modern and responsive UI.
-
----
 
 ## ✨ Features
 
@@ -30,21 +24,15 @@ This is the first official version of the To-Do List App. It includes basic func
 - 📱 Responsive design using Bootstrap
 - 🎨 Theming support through CSS variables (ready for dark/light mode)
 
----
-
 ## 📸 Screenshots
 
 <img src="assets/img/preview.png" alt="preview" width="600" />
 
----
-
-### 🔧 Built With
+## 🔧 Built With
 - **HTML** 
 - **CSS** 
 - **JavaScript** 
 - **Bootstrap** 
-
----
 
 ## 🧑‍💻 Author
 **Jenna Miles Reyes**
