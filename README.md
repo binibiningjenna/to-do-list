@@ -6,20 +6,26 @@ A clean, responsive, and easy-to-use web-based To-Do List application designed t
 
 ✨ You can view the project here: [To-Do List Web App](https://binibiningjenna.github.io/to-do-list/)
 
-## 📌 Version
+**Current Release: v1.1.0**
 
-**Current Release: v1.0.0**
-
-This is the first official version of the To-Do List App. It includes basic functionality such as adding, editing, deleting, and filtering tasks with a modern and responsive UI.
+### 🔄 What’s New in v1.1.0
+- 🗂️ **Added Task Priority Options** – Tasks can now be assigned a priority: `High`, `Medium`, or `Low`
+- 📅 **Due Date Support** – Users can now set a due date for each task
+- 🔍 **Enhanced Filtering** – Filter tasks not only by status but also by priority and due date (e.g. Today, Tomorrow, This Week, Overdue)
+- ⚠️ **Input Validation** – Error alert if the task description is empty
+- 📨 **Improved Empty State Message** – Better messaging when no tasks are found based on current filters
 
 ## ✨ Features
 
-- 🆕 Add new tasks with a description
-- ✏️ Edit existing tasks and update their status (`Not Started`, `In Progress`, `Done`)
+- 🆕 Add new tasks with a description, due date, and priority
+- ✏️ Edit existing tasks and update their status, description, date, or priority
 - 🗑️ Delete tasks with confirmation modal
-- 🔍 Filter tasks by status: `All`, `Not Started`, `In Progress`, `Done`
+- 🔍 Filter tasks by:
+  - Status: `All`, `Not Started`, `In Progress`, `Done`
+  - Priority: `High`, `Medium`, `Low`
+  - Due Date: `All`, `Today`, `Tomorrow`, `This Week`, `Overdue`
 - 📅 Dynamic current date display
-- 📭 Message when no tasks are available
+- 📭 Message when no tasks are available or match filters
 - 💾 Tasks are saved using browser `localStorage`
 - 📱 Responsive design using Bootstrap
 - 🎨 Theming support through CSS variables (ready for dark/light mode)
