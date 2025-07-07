@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>To-Do List</title>
     <link rel="icon" type="image/png" href="assets/img/logo.png" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
     <!-- Navigation Bar -->
     <div class="text-center px-3 px-lg-4 py-3 mb-4 border-bottom" style="background-color: var(--primaryColor)">
-      <a href="./" class="">
+      <a href="./">
         <img src="assets/img/logo.png" alt="logo" width="40px" />
       </a>
     </div>
@@ -25,39 +25,92 @@
             <div><i class="bi bi-calendar-check"></i> <span id="currentDate"></span></div>
           </div>
 
-          <!-- Add Task and Filter -->
-          <div class="d-flex justify-content-center mt-5 gap-3 flex-wrap">
-            <div class="input-group" style="max-width: 450px; width: 100%">
-              <input type="text" class="form-control" id="inputTask" placeholder="Add a new task" aria-label="Recipient’s username" aria-describedby="button-addon2" />
-              <button class="btn btn-primary" type="button" onclick="addTask()" id="button-addon2">Add</button>
-            </div>
-            <div class="input-group position-relative" style="max-width: 250px; width: 100%">
-              <i class="bi bi-filter position-absolute top-50 start-0 translate-middle-y ms-2"></i>
-              <select class="form-select" id="inputGroupSelect" aria-label="Example select with button addon">
-                <option value="All" selected>All</option>
+          <!-- Add Task -->
+          <div class="mt-5">
+              <div class="row g-3 justify-content-center">
+                <div class="col-md-6" style="max-width: 500px">
+                  <input type="text" class="form-control" id="input" placeholder="Task description" />
+                </div>
+                <div class="col-md-3" style="max-width: 185px; width: 100%">
+                  <input type="date" class="form-control" id="dueDate" />
+                </div>
+                <div class="col-md-2" style="max-width: 180px; width: 100%">
+                  <select class="form-select" id="priority">
+                    <option selected disabled>Priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select>
+                </div>
+                <div class="col-md-auto">
+                  <button type="submit" class="btn btn-primary" style="max-width: 400px; width: 100%" onclick="addTask()">Add</button>
+                </div>
+              </div>
+
+              <!-- Alert Message -->
+              <div class="row justify-content-center">
+                <div class="col-auto mt-3">
+                  <div class="alert alert-danger mb-0 text-center d-none" id="noTaskMessage">All fields are required to add a task. Please ensure everything is filled out.</div>
+                </div>
+              </div>
+          </div>
+
+          <!-- Filter Section -->
+          <div class="d-flex justify-content-center gap-3 mt-5 mt-lg-3 flex-wrap">
+            <div style="max-width: 180px; width: 100%">
+              <select class="form-select" id="filterPriority" onchange="filterTask()">
+                <option selected disabled>Filter</option>
+                <option value="All">All</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
                 <option value="Not Started">Not Started</option>
                 <option value="In Progress">In Progress</option>
                 <option value="Done">Done</option>
               </select>
-              <button class="btn btn-primary" type="button" onclick="filterTask()">Apply</button>
+            </div>
+            <div style="max-width: 150px; width: 100%">
+              <select class="form-select" id="filterDueDate" onchange="filterTask()">
+                <option selected disabled>Due Date</option>
+                <option value="all">All</option>
+                <option value="today">Today</option>
+                <option value="tomorrow">Tomorrow</option>
+                <option value="this_week">This Week</option>
+                <option value="overdue">Overdue</option>
+              </select>
             </div>
           </div>
 
-          <!-- To Do List -->
-          <div class="card p-3 my-4 table-responsive">
+          <!-- To Do List Table -->
+          <div class="card p-4 my-4 table-responsive">
             <table class="table table-striped table-borderless">
               <thead class="align-middle">
                 <tr>
                   <th scope="col">STATUS</th>
-                  <th scope="col">TASK</th>
-                  <th class="text-end" scope="col">ACTION</th>
+                  <th scope="col">DESCRIPTION</th>
+                  <th scope="col">DUE DATE</th>
+                  <th scope="col">PRIORITY</th>
+                  <th class="text-end" scope="col">ACTIONS</th>
                 </tr>
               </thead>
-              <tbody id="list"></tbody>
+              <tbody id="list">
+                <tr>
+                  <td>In Progress</td>
+                  <td class="align-middle">Do activity 1</td>
+                  <td class="align-middle">June 01, 2025</td>
+                  <td class="align-middle">Medium</td>
+                  <td class="text-end align-middle">
+                    <div class="d-inline-flex gap-2">
+                      <a data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil-square"></i></a>
+                      <a style="color: red" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash3 pe-2"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
 
-          <!-- Edit Task Modal -->
+           <!-- Edit Task Modal -->
           <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content" style="border-radius: 15px">
@@ -77,16 +130,28 @@
                 <div class="modal-body" style="padding: 1.5rem">
                   <form id="editForm">
                     <div class="mb-3 text-start">
-                      <label for="statusTitle" class="form-label fw-bold">Status</label>
-                      <select class="form-select w-auto" aria-label="Default select example">
-                        <option value="Not Started" selected>Not Started</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Done">Done</option>
+                      <label for="status" class="form-label fw-bold">Status</label>
+                      <select class="form-select w-auto" id="editStatus">
+                      <option value="Not Started">Not Started</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Done">Done</option>
                       </select>
                     </div>
+                    <div class="mb-3 text-start">
+                      <label for="taskDescription" class="form-label fw-bold" required>Task</label>
+                      <textarea class="form-control" id="editDescription" rows="3">Do activity 1</textarea>
+                    </div>
+                    <div class="mb-3 text-start">
+                      <label for="dueDate" class="form-label fw-bold">Due Date</label>
+                      <input type="date" class="form-control" id="editDueDate" rows="3"></input>
+                    </div>
                     <div class="text-start">
-                      <label for="taskDescription" class="form-label fw-bold">Task</label>
-                      <textarea class="form-control" id="taskDescription" rows="3">Do activity 1</textarea>
+                      <label for="announcementTitle" class="form-label fw-bold">Priority</label>
+                      <select class="form-select w-auto" id="editPriority" aria-label="Default select example">
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                      </select>
                     </div>
                   </form>
                 </div>
@@ -166,7 +231,7 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/script.js"></script>
   </body>
 </html>
