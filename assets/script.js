@@ -23,7 +23,6 @@ if (localStorage.getItem("tasks")) {
     displayTasks();
 }
 
-// Add new task
 function addTask() {
     var input = document.getElementById("input");
     var inputValue = input.value.trim();
@@ -31,9 +30,10 @@ function addTask() {
     var dueDateValue = dueDate.value.trim();
     var priority = document.getElementById("priority");
     var priorityValue = priority.value.trim();
+    var message = document.getElementById("noTaskMessage"); 
 
-    if (inputValue !== "") {
-        // Add task to list
+    if (inputValue !== "" && dueDateValue !== "" && priorityValue !== "Priority") {
+        // Add task
         tasks.push({
             status: "Not Started",
             description: inputValue,
@@ -41,28 +41,28 @@ function addTask() {
             priority: priorityValue
         });
 
-        // Save tasks
+        // Save to localStorage
         localStorage.setItem("tasks", JSON.stringify(tasks));
 
-        // Clear input fields
+        // Clear fields
         input.value = "";
         dueDate.value = "";
-        priority.value = "";
+        priority.value = "Priority";
 
-        // Hide error message if showing
+        // Hide alert
         message.classList.add("d-none");
 
         // Show updated list
         displayTasks();
     } else {
-        // Show alert if description is empty
-        var message = document.getElementById("noTaskMessage");
+        // Show alert
         message.classList.remove("d-none");
         setTimeout(() => {
-            message.classList.add("d-none")
+            message.classList.add("d-none");
         }, 3000);
     }
 }
+
 
 // Show tasks on the table
 function displayTasks(taskArray = tasks) {
@@ -154,7 +154,7 @@ function filterTask() {
     var priority = document.getElementById("filterPriority").value;
     var dueDate = document.getElementById("filterDueDate").value;
 
-    if (priority === "All" && dueDate === "all") {
+    if (priority === "All" && dueDate === "All") {
         displayTasks();
         return;
     }
@@ -198,3 +198,4 @@ function filterTask() {
 
     displayTasks(filteredTasks);
 }
+
