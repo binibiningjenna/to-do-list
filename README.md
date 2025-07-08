@@ -6,9 +6,13 @@ A clean, responsive, and easy-to-use web-based To-Do List application designed t
 
 ✨ You can view the project here: [To-Do List Web App](https://binibiningjenna.github.io/to-do-list/)
 
-**Current Release: v1.1.0**
+## 🔖 Current Release: v1.1.1
 
-### 🔄 What’s New in v1.1.0
+### 🛠️ What’s New in v1.1.1
+- 🐛 **Bug Fixes** – Resolved minor issues related to task filtering and form validation
+- 🎨 **UI Enhancements** – Improved layout spacing, alignment, and overall responsiveness for a smoother experience on both desktop and mobile devices
+
+### 🔄 Features added in v1.1.0
 - 🗂️ **Added Task Priority Options** – Tasks can now be assigned a priority: `High`, `Medium`, or `Low`
 - 📅 **Due Date Support** – Users can now set a due date for each task
 - 🔍 **Enhanced Filtering** – Filter tasks not only by status but also by priority and due date (e.g. Today, Tomorrow, This Week, Overdue)
