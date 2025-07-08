@@ -183,9 +183,13 @@ function filterTask() {
                     matchDueDate = taskDate.getTime() === tomorrow.getTime();
                     break;
                 case "this_week":
+                    var startOfWeek = new Date(today);
                     var endOfWeek = new Date(today);
-                    endOfWeek.setDate(today.getDate() + (7 - today.getDay()));
-                    matchDueDate = taskDate.getTime() === endOfWeek.getTime();
+                    startOfWeek.setDate(today.getDate() - today.getDay());
+                    endOfWeek.setDate(today.getDate() + (6 - today.getDay()));
+                    startOfWeek.setHours(0,0,0,0);
+                    endOfWeek.setHours(23,59,59,999);
+                    matchDueDate = taskDate >= startOfWeek && taskDate <= endOfWeek;
                     break;
                 case "overdue":
                     matchDueDate = taskDate < today;
